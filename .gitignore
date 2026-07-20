@@ -1,0 +1,17 @@
+# Environments
+finops-agent/
+env/
+.env
+
+# Python Cache (Compiled python files that are auto-generated)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE and OS specific files
+.vscode/
+.idea/
+.DS_Store
+
+# Data files (Optional: we ignore generated CSVs so we don't clog up Git)
+data/*.csv
