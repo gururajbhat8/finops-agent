@@ -37,7 +37,7 @@ def devops_node(state: dict) -> dict:
 
     code = response.content
 
-    if code.startwith("```python"):
+    if code.startswith("```python"):
         code = code.replace("```python", "").replace("```", "").strip()
 
 
