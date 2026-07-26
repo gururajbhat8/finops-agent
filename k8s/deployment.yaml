@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finops-agent-deployment
+  labels:
+    app: finops-agent
+spec:
+  # High Availability: Run 3 identical copies of our AI Dashboard across different servers!
+  replicas: 3
+  selector:
+    matchLabels:
+      app: finops-agent
+  template:
+    metadata:
+      labels:
+        app: finops-agent
+    spec:
+      containers:
+      - name: finops-agent
+        image: finops-agent:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8501
+        
+        env:
+        - name: AWS_DEFAULT_REGION
+          value: "us-east-1"
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: access-key-id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: secret-access-key
+              
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8501
+          initialDelaySeconds: 15
+          periodSeconds: 20

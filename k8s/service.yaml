@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: finops-agent-service
+spec:
+  type: ClusterIP
+  selector:
+    app: finops-agent
+  ports:
+    - protocol: TCP
+      port: 80       # The port the load balancer will talk to
+      targetPort: 8501 # The port Docker container (Streamlit) is listening on
