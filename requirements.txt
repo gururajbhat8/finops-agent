@@ -3,4 +3,5 @@ langchain
 langchain-aws
 langgraph
 boto3
-dotenv
+python-dotenv
+streamlit

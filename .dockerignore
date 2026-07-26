@@ -1,0 +1,15 @@
+# Exclude environments and caches
+venv/
+finops-env/
+__pycache__/
+*.pyc
+
+# Exclude sensitive secrets!
+.env
+
+# Exclude git and editor metadata
+.git/
+.vscode/
+
+# Exclude any temporary local data
+data/temp_uploaded_billing.csv
