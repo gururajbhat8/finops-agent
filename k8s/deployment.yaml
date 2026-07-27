@@ -17,12 +17,16 @@ spec:
     spec:
       containers:
       - name: finops-agent
-        image: finops-agent:v1
+        image: 311057178670.dkr.ecr.us-east-1.amazonaws.com/finops-agent:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8501
         
         env:
+        - name: STREAMLIT_SERVER_ENABLE_CORS
+          value: "false"
+        - name: STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION
+          value: "false"
         - name: AWS_DEFAULT_REGION
           value: "us-east-1"
         - name: AWS_ACCESS_KEY_ID
